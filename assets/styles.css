@@ -1,0 +1,140 @@
+:root {
+  --color-bg: #f5f7fa;
+  --color-fg: #333333;
+  --color-muted: #666666;
+  --color-primary: #2E8B57;
+  --color-accent: #FFD700;
+  --font-body: 'Roboto', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+}
+
+
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  margin: 8px 0 6px;
+  text-align: center;
+}
+
+.sub {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.card {
+  border-radius: 14px;
+  padding: 18px 16px;
+  margin: 12px 0;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.buy {
+  background: #123822;
+  color: #00ff88;
+}
+
+.hold {
+  background: #3a3515;
+  color: var(--color-accent);
+}
+
+.sell {
+  background: #3a1515;
+  color: #ff5a5a;
+}
+
+.break {
+  background: #1d2430;
+  color: #cbd5e1;
+}
+
+.asset {
+  font-size: 13px;
+  color: var(--color-muted);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.signal {
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.meta {
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.since {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+footer {
+  margin-top: 28px;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+header {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
