@@ -224,6 +224,50 @@ h1 span {
 /* ─── CARDS ─── */
 .cards { display: flex; flex-direction: column; gap: 2px; }
 
+.signals-explainer {
+  margin: 0 0 30px;
+  padding: 22px 24px;
+  border: 1px solid rgba(0,255,136,0.25);
+  background: linear-gradient(135deg, rgba(0,255,136,0.08), rgba(0,204,255,0.04));
+  border-radius: 12px;
+}
+
+.signals-explainer h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 34px;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.signals-explainer p {
+  color: rgba(255,255,255,0.78);
+  line-height: 1.65;
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+.signals-explainer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid rgba(0,255,136,0.5);
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.signals-explainer a:hover {
+  background: rgba(0,255,136,0.12);
+  box-shadow: 0 0 20px rgba(0,255,136,0.15);
+}
+
 .card {
   position: relative;
   background: rgba(255,255,255,0.03);
@@ -434,6 +478,17 @@ footer {
   </div>
 
   <div class="cards">
+
+    <section class="signals-explainer">
+      <h2>New to Tankrich Signals?</h2>
+      <p>
+        If you're wondering what each signal means and how to interpret these updates,
+        start with the full methodology and explanation shared by Vivek Bothra.
+      </p>
+      <a href="https://open.substack.com/pub/vivekbothra/p/tankrich-signals?" target="_blank" rel="noopener noreferrer">
+        Read signal explanation ↗
+      </a>
+    </section>
 
     <div class="card break">
       <div class="card-orbit"></div>
