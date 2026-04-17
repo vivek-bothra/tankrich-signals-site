@@ -1,59 +1,180 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Tankrich Signals</title>
-<style>
-:root {
-  --bg:#0f1115; --fg:#eaeaea; --muted:#9aa0a6;
-  --buy:#123822; --hold:#3a3515; --sell:#3a1515; --break:#1d2430;
-  --buyText:#00ff88; --holdText:#ffd700; --sellText:#ff5a5a; --breakText:#cbd5e1;
-  --card:#151922; --ring:#2a2f3a;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif}
-.wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px}
-h1{font-size:28px;margin:8px 0 6px;text-align:center}
-.sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:18px}
-.card{border-radius:14px;padding:18px 16px;margin:12px 0;background:var(--card);border:1px solid var(--ring);display:flex;flex-direction:column;gap:6px}
-.asset{font-size:13px;color:var(--muted);letter-spacing:.3px;text-transform:uppercase}
-.signal{font-weight:800;font-size:28px}
-.meta{font-size:13px;color:var(--muted)}
-.since{font-size:14px;margin-top:4px}
-.buy{background:var(--buy);color:var(--buyText)}
-.hold{background:var(--hold);color:var(--holdText)}
-.sell{background:var(--sell);color:var(--sellText)}
-.break{background:var(--break);color:var(--breakText)}
-footer{margin-top:28px;text-align:center;color:var(--muted);font-size:12px}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tankrich Signals</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #131a2d;
+      --fg: #e5ecff;
+      --muted: #9ba6c7;
+      --card: #121a31;
+      --ring: #273457;
+      --buy-bg: #0e3122;
+      --hold-bg: #3a3515;
+      --sell-bg: #3a1515;
+      --break-bg: #1d2430;
+      --buy-fg: #39f8a2;
+      --hold-fg: #ffd94a;
+      --sell-fg: #ff8f8f;
+      --break-fg: #d7deef;
+      --accent: #7aa2ff;
+      --shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--fg);
+      background:
+        radial-gradient(circle at 10% -10%, #243667 0%, transparent 42%),
+        radial-gradient(circle at 90% -20%, #1d2a4a 0%, transparent 38%),
+        var(--bg);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.45;
+    }
+
+    .wrap {
+      width: min(100%, 920px);
+      margin: 0 auto;
+      padding: 30px 16px 64px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--ring);
+      background: rgba(122, 162, 255, 0.12);
+      color: #c8d8ff;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+    }
+
+    .sub {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .signals {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .card {
+      border-radius: 16px;
+      border: 1px solid var(--ring);
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 5px;
+      background: var(--card);
+      transition: transform 120ms ease, border-color 120ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #3b4d7d;
+    }
+
+    .asset {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #d4defa;
+      font-weight: 700;
+    }
+
+    .signal {
+      font-size: clamp(24px, 4vw, 30px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-top: 2px;
+    }
+
+    .meta,
+    .since {
+      font-size: 13px;
+      color: #d4dbef;
+    }
+
+    .since strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .buy { background: linear-gradient(180deg, rgba(18, 56, 34, 0.97), rgba(11, 35, 24, 0.97)); color: var(--buy-fg); }
+    .hold { background: linear-gradient(180deg, rgba(58, 53, 21, 0.97), rgba(40, 36, 12, 0.97)); color: var(--hold-fg); }
+    .sell { background: linear-gradient(180deg, rgba(58, 21, 21, 0.97), rgba(40, 13, 13, 0.97)); color: var(--sell-fg); }
+    .break { background: linear-gradient(180deg, rgba(29, 36, 48, 0.97), rgba(22, 28, 37, 0.97)); color: var(--break-fg); }
+
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 560px) {
+      .wrap { padding-top: 20px; }
+      .card { padding: 14px; border-radius: 14px; }
+    }
+  </style>
 </head>
 <body>
   <div class="wrap">
-    <h1><strong>TANKRICH SIGNALS</strong></h1>
-    <div class="sub">Last updated: Mon, 13 Apr 2026 10:30 UTC</div>
-    
-        <div class="card buy">
-          <div class="asset">BTC</div>
-          <div class="signal">🟢 WAKE UP</div>
-          <div class="meta">BTCUSD • Weekly</div>
-          <div class="since">Entry date: <strong>2026-04-13</strong></div>
-        </div>
-        
-        <div class="card hold">
-          <div class="asset">Gold</div>
-          <div class="signal">🟡 STAY PUT</div>
-          <div class="meta">GLD • Monthly</div>
-          <div class="since">Entry date: <strong>2023-03-04</strong></div>
-        </div>
-        
-        <div class="card hold">
-          <div class="asset">Silver</div>
-          <div class="signal">🟡 STAY PUT</div>
-          <div class="meta">SLV • Monthly</div>
-          <div class="since">Entry date: <strong>2023-08-01</strong></div>
-        </div>
-        
+    <header class="hero">
+      <div class="kicker">Market Pulse</div>
+      <h1>TANKRICH SIGNALS</h1>
+      <div class="sub">Last updated: Mon, 13 Apr 2026 10:30 UTC</div>
+    </header>
+
+    <!-- Keep this design shell intact. -->
+    <section class="signals" aria-label="Latest strategy signals">
+      <!-- SIGNAL_CARDS_START: automation should only replace card article blocks below -->
+      <article class="card buy">
+        <div class="asset">BTC</div>
+        <div class="signal">🟢 WAKE UP</div>
+        <div class="meta">BTCUSD • Weekly</div>
+        <div class="since">Entry date: <strong>2026-04-13</strong></div>
+      </article>
+
+      <article class="card hold">
+        <div class="asset">Gold</div>
+        <div class="signal">🟡 STAY PUT</div>
+        <div class="meta">GLD • Monthly</div>
+        <div class="since">Entry date: <strong>2023-03-04</strong></div>
+      </article>
+
+      <article class="card hold">
+        <div class="asset">Silver</div>
+        <div class="signal">🟡 STAY PUT</div>
+        <div class="meta">SLV • Monthly</div>
+        <div class="since">Entry date: <strong>2023-08-01</strong></div>
+      </article>
+      <!-- SIGNAL_CARDS_END -->
+    </section>
+
     <footer>Signals auto-generated every Monday 09:00 UTC • Data: Kraken/Coinbase (BTC), Yahoo Finance ETFs (GLD/SLV)</footer>
   </div>
 </body>
